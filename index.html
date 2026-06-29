@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ТСК History — строим дома в Красноярске</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== БАЗА ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: #f5f2ed;
+            color: #1a2428;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== ШАПКА ===== */
+        .header {
+            background: #1a2428;
+            color: #fff;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .header .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .header .logo {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        .header .logo span {
+            color: #9aaba8;
+            font-weight: 400;
+        }
+        .header .logo .accent {
+            color: #c7a67c;
+        }
+        .header .phone {
+            color: #fff;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .header .phone:hover {
+            color: #c7a67c;
+        }
+        .header .phone svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* ===== ГЕРОЙ ===== */
+        .hero {
+            text-align: center;
+            padding: 56px 20px 48px;
+            background: linear-gradient(165deg, #ffffff 0%, #f8f5f0 100%);
+            border-radius: 0 0 48px 48px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+            margin-bottom: 8px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+        .hero h1 .highlight {
+            color: #c7a67c;
+            position: relative;
+        }
+        .hero h1 .highlight-green {
+            color: #2a6b4a;
+        }
+        .hero .sub {
+            font-size: 20px;
+            color: #4d5e63;
+            max-width: 720px;
+            margin: 0 auto 32px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* ===== КРУГ С ЧИСЛОМ ===== */
+        .circle-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6px 0 28px;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a2428, #2a383e);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(26,36,40,0.20);
+            transition: transform 0.3s ease;
+            padding: 0 12px;
+        }
+        .circle:hover {
+            transform: scale(1.03);
+        }
+        .circle .number {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        .circle .label {
+            font-size: 14px;
+            color: #bcc9cd;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-align: center;
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+        .circle-desc {
+            margin-top: 12px;
+            font-size: 17px;
+            color: #4d5e63;
+            font-weight: 500;
+        }
+
+        /* ===== КНОПКА TG ===== */
+        .btn-tg {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(145deg, #0088cc, #0077b3);
+            color: #fff;
+            font-weight: 600;
+            padding: 17px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,136,204,0.30);
+        }
+        .btn-tg:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 28px rgba(0,136,204,0.35);
+            background: linear-gradient(145deg, #0099dd, #0088cc);
+        }
+        .btn-tg:active {
+            transform: scale(0.97);
+        }
+        .btn-tg svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-12 {
+            margin-top: 16px;
+        }
+
+        /* ===== БЛОКИ ===== */
+        .block {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 40px 36px;
+            margin: 32px 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid #ece7e0;
+            transition: box-shadow 0.3s ease;
+        }
+        .block:hover {
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+        }
+        .block h2 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+        .block .subh {
+            color: #4d5e63;
+            margin-bottom: 24px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .block .subh-strong {
+            font-size: 18px;
+            color: #1a2428;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* ===== О КОМПАНИИ ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 32px;
+            margin: 8px 0 4px;
+            padding: 0;
+        }
+        .about-grid li {
+            list-style: none;
+            font-size: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0ebe4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .about-grid li::before {
+            content: "✓";
+            color: #2a6b4a;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* ===== ОТЗЫВЫ ===== */
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .review {
+            background: #f7f4ef;
+            padding: 22px 20px;
+            border-radius: 22px;
+            transition: transform 0.2s ease;
+        }
+        .review:hover {
+            transform: translateY(-3px);
+        }
+        .review .stars {
+            color: #e8b84a;
+            letter-spacing: 2px;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .review .name {
+            font-weight: 700;
+            font-size: 17px;
+            color: #1a2428;
+        }
+        .review .text {
+            font-size: 15px;
+            color: #2f3e43;
+            margin: 8px 0 10px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .review .text::before {
+            content: "«";
+            color: #c7a67c;
+        }
+        .review .text::after {
+            content: "»";
+            color: #c7a67c;
+        }
+        .review .date {
+            font-size: 13px;
+            color: #7a8d92;
+        }
+
+        /* ===== УСЛУГИ ===== */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .services .item {
+            background: #f7f4ef;
+            padding: 22px 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+            border: 1px solid transparent;
+        }
+        .services .item:hover {
+            transform: translateY(-3px);
+            border-color: #c7a67c;
+        }
+        .services .item .icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .services .item small {
+            display: block;
+            font-weight: 400;
+            font-size: 14px;
+            color: #4d5e63;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* ===== КОНТАКТЫ ===== */
+        .contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 44px;
+            justify-content: center;
+            padding: 8px 0 4px;
+        }
+        .contacts a {
+            color: #1a2428;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contacts a:hover {
+            color: #c7a67c;
+        }
+        .contacts .icon {
+            font-size: 22px;
+        }
+
+        /* ===== РЕКВИЗИТЫ ===== */
+        .requisites {
+            font-size: 14px;
+            color: #7a8d92;
+            text-align: center;
+            border-top: 1px solid #e3dcd3;
+            padding-top: 28px;
+            margin-top: 12px;
+            padding-bottom: 12px;
+        }
+        .requisites p {
+            margin-bottom: 2px;
+        }
+
+        /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .block {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .block:nth-child(2) { animation-delay: 0.1s; }
+        .block:nth-child(3) { animation-delay: 0.2s; }
+        .block:nth-child(4) { animation-delay: 0.3s; }
+        .block:nth-child(5) { animation-delay: 0.4s; }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero .sub {
+                font-size: 17px;
+            }
+            .block {
+                padding: 28px 20px;
+                margin: 20px 0;
+            }
+            .block h2 {
+                font-size: 24px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .header .logo {
+                font-size: 20px;
+            }
+            .header .phone {
+                font-size: 16px;
+            }
+            .circle {
+                width: 120px;
+                height: 120px;
+            }
+            .circle .number {
+                font-size: 44px;
+            }
+            .circle .label {
+                font-size: 12px;
+            }
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+            .contacts {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            .btn-tg {
+                font-size: 16px;
+                padding: 15px 28px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+            .circle {
+                width: 100px;
+                height: 100px;
+            }
+            .circle .number {
+                font-size: 36px;
+            }
+            .circle .label {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== ШАПКА ==================== -->
+<div class="header">
+    <div class="container">
+        <div class="logo">ТСК <span class="accent">History</span> <span>строим дома</span></div>
+        <a class="phone" href="tel:+89676053643">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            8 967 605-36-43
+        </a>
+    </div>
+</div>
+
+<!-- ==================== ГЕРОЙ ==================== -->
+<div class="hero container">
+    <h1>
+        Построим дом за <span class="highlight">100 дней</span><br />
+        с гарантией <span class="highlight">3 года</span> от <span class="highlight-green">5 млн</span> ₽
+    </h1>
+    <p class="sub">
+        Подберем проект под ваш или наш участок и бюджет.<br />
+        Покажем комплектацию, этапы работ и стоимость до старта строительства.
+    </p>
+
+    <!-- КРУГ С ЧИСЛОМ -->
+    <div class="circle-wrap">
+        <div class="circle">
+            <div class="number">97</div>
+            <div class="label">домов построили</div>
+        </div>
+        <div class="circle-desc">Более 8 лет опыта в Красноярске</div>
+    </div>
+
+    <a href="https://t.me/Stoimost_doma_bot" class="btn-tg" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Узнай цену своего дома за 2 минуты
+    </a>
+</div>
+
+<!-- ==================== О КОМПАНИИ ==================== -->
+<div class="container">
+    <div class="block">
+        <h2>Кто мы?</h2>
+        <p class="subh">ТСК «History» — более 8 лет строим надёжные дома в Красноярске и пригороде.</p>
+
+        <ul class="about-grid">
+            <li>Работаем по договору с фиксированной ценой</li>
+            <li>Автоклавный газобетон и брус 180 мм</li>
+            <li>Полный цикл: фундамент → кровля → отделка</li>
+            <li>Электрокотёл + тёплые полы в каждом проекте</li>
+            <li>Скважина до 30 м и септик 6 м² в комплекте</li>
+            <li>Пластиковые окна 5-камерный профиль</li>
+            <li>Двери металлические с терморазрывом</li>
+            <li>Внешняя отделка — декоративная штукатурка</li>
+        </ul>
+
+        <div class="text-center mt-12">
+            <a href="https://t.me/Stoimost_doma_bot" class="btn-tg" target="_blank">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Узнай цену своего дома за 2 минуты
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== УСЛУГИ ==================== -->
+<div class="container">
+    <div class="block">
+        <h2>💰 Удобные условия оплаты</h2>
+        <p class="subh">Сделаем строительство доступным для вас</p>
+
+        <div class="services">
+            <div class="item">
+                <span class="icon">🏦</span>
+                Поможем получить ипотеку
+                <small>Подберём банк под вашу ситуацию</small>
+            </div>
+            <div class="item">
+                <span class="icon">📅</span>
+                Рассрочка на строительство
+                <small>Удобно, если продаёте что-то своё</small>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://t.me/Stoimost_doma_bot" class="btn-tg" target="_blank">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Узнай цену своего дома за 2 минуты
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== ОТЗЫВЫ ==================== -->
+<div class="container">
+    <div class="block">
+        <h2>❤️ Отзывы наших клиентов</h2>
+        <p class="subh">Реальные люди, реальные дома</p>
+
+        <div class="reviews">
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <div class="name">Алексей, Сосновоборск</div>
+                <div class="text">Построили дом за 3 месяца, как обещали. Всё чётко, без сюрпризов. Отдельно спасибо за помощь с ипотекой.</div>
+                <div class="date">май 2025</div>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <div class="name">Екатерина, Красноярск</div>
+                <div class="text">Выбрали проект Микея 5. Строили из газобетона — очень тёплый дом. Менеджеры всегда на связи, отвечали на все вопросы.</div>
+                <div class="date">март 2025</div>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <div class="name">Дмитрий, Емельяново</div>
+                <div class="text">Сравнивал 4 компании, выбрал Историю за прозрачную смету. Никаких доплат в процессе — всё как в договоре.</div>
+                <div class="date">февраль 2025</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://t.me/Stoimost_doma_bot" class="btn-tg" target="_blank">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Узнай цену своего дома за 2 минуты
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== КОНТАКТЫ ==================== -->
+<div class="container">
+    <div class="block">
+        <h2>📬 Свяжитесь с нами</h2>
+        <p class="subh">Ответим на все вопросы, подберём проект, рассчитаем стоимость</p>
+
+        <div class="contacts">
+            <a href="tel:+89676053643">
+                <span class="icon">📞</span> 8 967 605-36-43
+            </a>
+            <a href="https://t.me/EasyPeasyLemonSqueezii" target="_blank">
+                <span class="icon">💬</span> Telegram
+            </a>
+            <a href="https://max.ru/u/f9LHodD0cOJ0jbOT-2L63W5CN7Baqx0qwEaL0tGObln-PU5uzKtC4bvQVAU" target="_blank">
+                <span class="icon">✉️</span> MAX
+            </a>
+            <a href="https://www.instagram.com/mikeyushkevich?igsh=MWE3dWxwZHkzNjRwYw%3D%3D&utm_source=qr" target="_blank">
+                <span class="icon">📷</span> Instagram
+            </a>
+            <a href="https://2gis.ru/krasnoyarsk/geo/70000001068712428" target="_blank">
+                <span class="icon">📍</span> 2ГИС
+            </a>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://t.me/Stoimost_doma_bot" class="btn-tg" target="_blank">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Узнай цену своего дома за 2 минуты
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== РЕКВИЗИТЫ ==================== -->
+<div class="container">
+    <div class="requisites">
+        <p>ИП Юшкевич М.В. · ИНН 1234567890 · ОГРНИП 312345678901234</p>
+        <p>Красноярск · Работаем по договору · Все права защищены</p>
+    </div>
+</div>
+
+</body>
+</html>
